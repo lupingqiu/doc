@@ -38,3 +38,10 @@ idea中创建remote run，端口与5005一致
 spark-submit --master spark://rube-ubuntu:7077 --class SparkWordCount --executor-memory 1g /home/rube/cloudera/spark_demo/out/artifacts/spark_demo_jar/spark_demo.jar hdfs://ns1/README.md hdfs://ns1/SparkWordCountResult
 
 indea中运行debug，然后调试
+
+[参考文档]（http://blog.csdn.net/lovehuangjiaju/article/details/49227919）
+
+6. 大神文档
+
+   http://blog.csdn.net/column/details/Spark.html
+   TaskScheduler，SchedulerBackend和DAG Scheduler sparkcontext
