@@ -34,3 +34,7 @@
 1. 1.1的client可以连接到1.0的kudu服务。
 2. 1.0的client可以无限制的连接到1.1kudu服务。
 3. 滚动升级从1.0到1.1是可能的，但是没有完整的测试。建议安装关闭所有节点，更新版本，启动更新的节点的步骤来升级。
+
+## 参考
+
+https://github.com/cloudera/kudu/blob/master/docs/prior_release_notes.adoc
