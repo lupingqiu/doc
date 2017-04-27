@@ -24,13 +24,6 @@ Git中从远程的分支获取最新的版本到本地方式如下，
 1. 查看远程仓库
 
 
-1
-2
-3
-4
-5
-6
-
 $ git remote -v
 eoecn   https://github.com/eoecn/android-app.git (fetch)
 eoecn   https://github.com/eoecn/android-app.git (push)
@@ -38,34 +31,23 @@ origin  https://github.com/com360/android-app.git (fetch)
 origin  https://github.com/com360/android-app.git (push)
 su@SUCHANGLI /e/eoe_client/android-app (master)
 从上面的结果可以看出，远程仓库有两个，一个是eoecn，一个是origin
-2 ,从远程获取最新版本到本地
 
+2. 从远程获取最新版本到本地
 
-1
-2
-3
-4
 
 $ git fetch origin master
 From https://github.com/com360/android-app
  * branch            master     -> FETCH_HEAD
 su@SUCHANGLI /e/eoe_client/android-app (master)
 $ git fetch origin master 这句的意思是：从远程的origin仓库的master分支下载代码到本地的origin master
+
 3. 比较本地的仓库和远程参考的区别
-
-
-1
-2
 
 $ git log -p master.. origin/master
 su@SUCHANGLI /e/eoe_client/android-app (master)
 因为我的本地仓库和远程仓库代码相同所以没有其他任何信息
+
 4. 把远程下载下来的代码合并到本地仓库，远程的和本地的合并
-
-
-1
-2
-3
 
 $ git merge origin/master
 Already up-to-date.
@@ -74,14 +56,9 @@ su@SUCHANGLI /e/eoe_client/android-app (master)
 
 以上的方式有点不好理解，大家可以使用下面的方式，并且很安全
 方式二
-1.查看远程分支，和上面的第一步相同
+1. 查看远程分支，和上面的第一步相同
+
 2. 从远程获取最新版本到本地
-
-
-1
-2
-3
-4
 
 $ git fetch origin master:temp
 From https://github.com/com360/android-app
@@ -91,19 +68,11 @@ git fetch origin master:temp 这句命令的意思是：从远程的origin仓库
 
 比较本地的仓库和远程参考的区别
 
-1
-2
-
 $ git diff temp
 su@SUCHANGLI /e/eoe_client/android-app (master)
 命令的意思是：比较master分支（个人理解为“本地master分支”）和temp分支的不同
 由于我的没有区别就没有显示其他信息
 4. 合并temp分支到master分支（个人理解为“本地master分支”）
-
-
-1
-2
-3
 
 $ git merge temp
 Already up-to-date.
@@ -111,11 +80,6 @@ su@SUCHANGLI /e/eoe_client/android-app (master)
 由于没有区别，所以显示Already up-to-date.
 合并的时候可能会出现冲突，有时间了再把如何处理冲突写一篇博客补充上。
 5.如果不想要temp分支了，可以删除此分支
-
-
-1
-2
-3
 
 $ git branch -d temp
 Deleted branch temp (was d6d48cc).
@@ -137,9 +101,10 @@ git merge origin/master
    然后比较本地的master分支和origin/master分支的差别
    最后进行合并
    上述过程其实可以用以下更清晰的方式来进行：
-git fetch origin master:tmp
-git diff tmp
-git merge tmp
+   
+    git fetch origin master:tmp
+    git diff tmp
+    git merge tmp
 
     从远程获取最新的版本到本地的test分支上
    之后再进行比较合并
