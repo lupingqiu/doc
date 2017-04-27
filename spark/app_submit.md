@@ -42,14 +42,14 @@
       schedulableBuilder中添加TaskSetManager，用于完成所有TaskSet的调度，即整个Spark程序生成的DAG图对应Stage的TaskSet调度
       SchedulerBackend backend.reviveOffers()为Task分配运行资源
 
-  11. SchedulerBackend实现类很多
+  11. 资源调度SchedulerBackend实现类很多
       SparkDeploySchedulerBackend CoarseGrainedSchedulerBackend  以此为例：调用 driverEndpoint.send(ReviveOffers)
       LocalBackend
       YarnClusterSchedulerBackend
       YarnClientSchedulerBackend
       MesosSchedulerBackend
 
-  12. org.apache.spark.rpc.RpcEndpointRef 实现org.apache.spark.rpc.akka AkkaRpcEndpointRef.send actorRef ! AkkaMessage(message, false)
+  12. org.apache.spark.rpc.RpcEndpointRef 实现org.apache.spark.rpc.akka AkkaRpcEndpointRef.send actorRef ! AkkaMessage(message, false) org.apache.spark.scheduler
 
   13. org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend class DriverEndpoint.receive接受消息makeOffers()
       launchTasks(scheduler.resourceOffers(workOffers))
@@ -64,8 +64,41 @@
   15. org.apache.spark.executor.Executor launchTask创建TaskRunner，TaskRunner是一个线程，线程池执行TaskRunner线程，run方法中调用task.run执行任务
       小结
       1 调用Driver端org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend中的launchTasks
-      2 调用Worker端的org.apache.spark.executor.CoarseGrainedExecutorBackend.launchTask
+      2 调用Worker端的org.apache.spark.executor.CoarseGrainedExecutorBackend.launchTask    
       3 执行org.apache.spark.executor.TaskRunner线程中的run方法
       4 调用org.apache.spark.scheduler.Task.run方法
       5 调用org.apache.spark.scheduler.ResultTask.runTask方法
       6 调用org.apache.spark.rdd.RDD.iterator方法
+
+16. org.apache.spark.executor.TaskRunner中会设置运行状态。CoarseGrainedSchedulerBackend的DriverEndpoint.receive接受TaskRunner发来的status信息，调用 TaskSchedulerImpl 的statusUpdate方法，如果成功，org.apache.spark.scheduler.taskResultGetter.enqueueSuccessfulTask
+
+17. org.apache.spark.scheduler.TaskSchedulerImpl.handleSuccessfulTask  TaskSetManager.handleSuccessfulTask
+
+18. 调用DagScheduler的taskEnded方法  sched.dagScheduler.taskEnded
+
+19. 调用DAGSchedulerEventProcessLoop的post方法将CompletionEvent提交到事件队列中，交由eventThread进行处理，onReceive方法将处理该事件.   doOnReceive ->   dagScheduler.handleTaskCompletion
+    小结
+    1 org.apache.Spark.executor.TaskRunner.statusUpdate方法
+    2 org.apache.spark.executor.CoarseGrainedExecutorBackend.statusUpdate方法
+    3 org.apache.spark.scheduler.cluster.CoarseGrainedSchedulerBackend#DriverEndpoint.recieve方法，DriverEndPoint是内部类
+    4 org.apache.spark.scheduler.TaskSchedulerImpl中的statusUpdate方法
+    5 org.apache.spark.scheduler.TaskResultGetter.enqueueSuccessfulTask方法
+    6 org.apache.spark.scheduler.DAGScheduler.handleTaskCompletion方法
+
+资源调度类与子类
+
+| Root | 第一层 | 第二层 | 第三层 |
+| ----|----|----|----|
+| SchedulerBackend | CoarseGrainedSchedulerBackend | YarnSchedulerBackend        | YarnClientSchedulerBackend  |
+|                  |                               |                             | YarnClusterSchedulerBackend |
+|                  |                               | CoarseMesosSchedulerBackend |                             |
+|                  |                               | SparkDeploySchedulerBackend |                             |
+|                  |                               | SimrSchedulerBackend        |                             |
+|                  | LocalBackend                  |                             |                             |
+|                  | MesosSchedulerBackend         |                             |            null             |
+
+任务调度类与子类
+
+| Root | 第一层 | 第二层 | 第三层 |
+| ---- | ---- | -------|
+| TaskScheduler | TaskSchedulerImpl | YarnScheduler| YarnClusterScheduler |

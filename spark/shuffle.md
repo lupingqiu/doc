@@ -1,0 +1,12 @@
+1. stage的输入来源有两种，要不从外部的存储读取数据，要不从上一个stage读取；而stage的输出也有两种，要不输出到本地存储供childstage读取，要不输出结果（最后一个stage）。在一个job中，只有最后一个stage是ResultTask，其余都是ShuffleMapTask。
+
+2. org.apache.spark.scheduler.DAGScheduler#handleTaskCompletion中如果是ShuffleMapTask的结果处理，会调用mapOutputTracker.registerMapOutputs方法。该方法注册MapStatus信息，即block的地址和size。
+
+3. 除了从外部存储或者checkpoint读取数据的Task，其他都是从ShuffledRDD的compute开始，其调用org.apache.spark.shuffle.ShuffleManager#getReader方法；随后得到HashShuffleReader，并执行它的read方法。
+
+4. 随后调用org.apache.spark.shuffle.hash.BlockStoreShuffleFetcher.fetch方法，里边有两个比较重要的步骤：调用mapOutputTracker.getServerStatuses获取MapStatus；调用new ShuffleBlockFetcherIterator初始化initialize方法。
+
+5. ShuffleBlockFetcherIterator初始化initialize方法主要步骤是读取远程数据sendRequest和本地数据fetchLocalBlocks(数据都写入LinkedBlockingQueue.results队列中)，远程数据即其他excutor的结果数据，实现是ShuffleBlockFetcherIterator#sendRequest方法，它调用shuffleClient.fetchBlocks方法，有两种实现：NettyBlockTransferService和NioBlockTransferService。
+
+参考Blog：http://blog.csdn.net/anzhsoft/article/details/42637953
+         http://blog.csdn.net/anzhsoft/article/details/42637969

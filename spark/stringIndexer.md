@@ -90,3 +90,8 @@ converted.select("id","categoryIndex"， "originalCategory").show()
 ## 引用
 
 [官方文档](http://spark.apache.org/docs/latest/ml-features.html#indextostring)
+
+
+cmp
+产品     李鹏 李吉
+前端     huihui bingjie
