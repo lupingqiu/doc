@@ -71,6 +71,7 @@
   
   - 梯度下降（批量），随机梯度下降，批量随机梯度下降，http://www.cnblogs.com/louyihang-loves-baiyan/p/5136447.html 
   - 在样本数据量少的时候使用批量梯度下降（下降速度最快），而在数据量大的时候建议使用批量随机梯度下降。
+  - http://www.cnblogs.com/LeftNotEasy/archive/2010/12/05/mathmatic_in_machine_learning_1_regression_and_gradient_descent.html
 
 - LR vs. DT vs. SVM
 
@@ -104,4 +105,22 @@
     >    FNR = FN /（TP + FN） 
     >    被预测为负的正样本结果数 / 正样本实际数
 
+- 零基础掌握极大似然估计
 
+    - http://mp.weixin.qq.com/s?srcid=0429iGLUos7yyXwox9UITQHn&scene=23&mid=2247483884&sn=31045e885fb01c3e3e03d78bde29695d&idx=1&__biz=MzI4MDYzNzg4Mw%3D%3D&chksm=ebb43938dcc3b02ef1997ddaaae13e83f83ec22b8183104175b9761acf42eaed6c52a9cfcfff&mpshare=1##
+    
+- 一文搞懂k邻近（knn）算法
+
+    - http://mp.weixin.qq.com/s?__biz=MzI4MDYzNzg4Mw==&mid=2247483771&idx=1&sn=e8cc00032205a73584867e85aa509a64&chksm=ebb439afdcc3b0b9bb4446bc874def2962886b6db112171c2c8fd73d1dc5d51ad27fb49d5ffd&scene=21#wechat_redirect
+    
+- 带你搞懂朴素贝叶斯分类算法
+
+    - http://mp.weixin.qq.com/s?__biz=MzI4MDYzNzg4Mw==&mid=2247483819&idx=1&sn=7f1859c0a00248a4c658fa65f846f341&chksm=ebb4397fdcc3b06933816770b928355eb9119c4c80a1148b92a42dc3c08de5098fd6f278e61e&scene=21#wechat_redirect
+
+- softmax函数以及相关求导过程
+
+    - http://www.jianshu.com/p/ffa51250ba2e
+    
+- BP算法
+
+    - http://blog.csdn.net/pennyliang/article/details/6695355 例子虽然有很多错误值，但可以大概了解反向传播过程
