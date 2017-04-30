@@ -106,4 +106,4 @@
 总体：
 
 Driver（触发action runjob）-> sparkcontext（提交runjob） -> DAGScheduler（把stage划分成task，submitTasks） -> TaskScheduler（把task追加到reviveOffers队列） -> SchedulerBackend（调度task给指定的excutor LaunchTask）
-worker-> ExecutorBackend                                                                  
+worker-> ExecutorBackend
