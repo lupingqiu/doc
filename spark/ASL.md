@@ -8,7 +8,7 @@
 
 ## spark2.x样例
 
-```
+```scala
 package com.rube.spark.example.als
 
 import org.apache.spark.SparkContext

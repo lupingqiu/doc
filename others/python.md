@@ -4,12 +4,12 @@
 ## 基础
 
 1. 函数当中的有无默认值的参数必须有默认值的在后边，例如：
-    ```
+    ```python
     def fun(name, age, school='三中')
     ```
 
 2. 在函数中如果要使用全局变量需要声明global，例如：
-    ```
+    ```python
     def fun():
         global a
         a = 100
@@ -19,18 +19,18 @@
 3. file readline 逐行读取，readlines读取全部
 
 4. 输入
-    ```
+    ```python
     a = input("Please give a number:") #return a string
     print("your input is :",a)
     ```
 5. 删除字典里的元素
-  ```
+  ```python
   d = {1:'a', 'x':2}
   del d['x']
   ```
 
 6. 异常处理
-  ```
+  ```python
   try:
     do something
   except Exception as e:
@@ -40,7 +40,7 @@
   ```
 
 7. zip lambda map
-  ```
+  ```python
   #合并
   a=[1,2,3]
   b=[4,5,6]
@@ -57,7 +57,7 @@
   ```
 
 8. 复制copy 浅复制copy 深复制deepcopy
-  ```
+  ```python
   import copy
   a=[1,2,3]
   b=a
@@ -77,7 +77,7 @@
   ```
 
 9. 多线程
-  ```
+  ```python
   import threading
   import time
 
@@ -108,7 +108,7 @@
   if __name__==‘__main__’:
     main()
   ```
-  ```
+  ```python
   #queue用于传递线程里的值
   import threading
   import time
@@ -138,7 +138,7 @@
   多线程尽量每个线程做不同种类的事情，才能达到效率，例如当一个线程在io时，另外一个线程就可以跑。
   如果是处理相同事，比如对一大块数据并发进行相同处理，性能不会提升很高。这里需要多核的处理。
 
-  ```
+  ```python
   #lock
   import threading
 
@@ -170,7 +170,7 @@
 
   ```
 10. 多核,多进程
-  ```
+  ```python
   import multiprocessing as mp
   import threading as td
 
@@ -186,7 +186,7 @@
     p1.join()
   ```
   跟多线程一样，target方法里也不能有return方法，职能通过queue来传递数据。
-  ```
+  ```python
   import multiprocessing as mp
 
   def job(q):
@@ -212,7 +212,7 @@
   multicore < normal < multithread
 
   进程池
-  ```
+  ```python
   import multiprocessing as mp
 
   def job(x):
@@ -235,14 +235,14 @@
   共享内存
   如果使用global变量，在多进程当中时行不通的，不能交流这个全局变量。
   可以使用shared memory
-  ```
+  ```python
   import multiprocessing as mp
 
   value = mp.Value('i',0)#i表示整数，d表示double，f表示float
   array = mp.Array('i',[1,2,3])#一维列表
   ```
   锁在共享内存当中的运用
-  ```
+  ```python
   import multiprocessing as mp
   import time
 
@@ -261,7 +261,8 @@
     p1.join()
     p2.join()
   ```
-  ```
+  输出会很乱，v的值紊乱，正确的姿势：
+  ```python
   import multiprocessing as mp
   import time
 
@@ -287,7 +288,7 @@
 11. tkinter窗口
 
 12. pickle
-  ```
+  ```python
   import pickle
   data = [1,2,3]
   file = open("pickle.pickle","wb")
@@ -304,7 +305,7 @@
   ```
 
 14. set集合
-  ```
+  ```python
   l = [1,2,3,1,2]
   print(set(l))
   s="Welcome to shanghai"
