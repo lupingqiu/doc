@@ -13,6 +13,10 @@
   显式反馈：矩阵中的元素就是user对item的显性偏好，例如打分值。
   隐式反馈：真实案例中一般是隐式反馈，例如查看数、点击数、是否喜欢、是否分享。
 
+## 相关基础
+
+  SVD：http://blog.csdn.net/zhongkejingwang/article/details/43053513
+
 ## spark2.x样例
 
 ```scala
