@@ -135,7 +135,7 @@ $$\alpha(i) = 1 \quad if \quad i != 0,
    = (\exp(x w_i) / (1 + \sum_k^{K-1} \exp(x w_k)) - (1-\alpha(y)\delta_{y, i+1})) * x_j
    = multiplier_i * x_j$$
    其中：
-    $$\delta_{i, j} = 1 \quad if  \quad i == j,
+   $$\delta_{i, j} = 1 \quad if  \quad i == j,
       \\ \delta_{i, j} = 0  \quad if  \quad i != j,
       \\ multiplier =
          \exp(margins_i) / (1 + \sum_k^{K-1} \exp(margins_i)) - (1-\alpha(y)\delta_{y, i+1})$$
