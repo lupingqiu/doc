@@ -72,11 +72,8 @@
   $$
   \begin{aligned}
   \frac{\partial J}{\partial u_{i}} &= -2\sum_{j}c_{ij}(p_{ij}-u_{i}^{T}v_{j})v_{j} + 2\lambda u_{i} \\
-  
   &=-2\sum_{j}c_{ij}(p_{ij}-v_{j}^{T}u_{i})v_{j} + 2\lambda u_{i} \\
-  
   &=-2\sum_{j}(c_{ij}p_{ij}v_{j}-c_{ij}v_{j}^{T}u_{i}v_{j}) + 2\lambda u_{i} \\
-  
   &=-2V^{T}C^{i}p_{i} + V^{T}C^{i}Vu_{i} + 2\lambda u_{i}
   \end{aligned}
   $$
@@ -84,9 +81,7 @@
   $$
   \begin{aligned}
   V^{T}C^{i}p_{i}&=(V^{T}C^{i}V+\lambda I)u_{i}\\
-  
   =>u_{i}&=(V^{T}C^{i}V+\lambda I)^{-1}V^{T}C^{i}p_{i} \\
-  
   &=(V^{T}V+V^{T}(C^{i}-I)V+\lambda I)^{T}V^{T}C^{i}p_{i}
   \end{aligned}
   $$
