@@ -79,7 +79,7 @@
   $$
   其中 $V$ 是`n*k`矩阵，$C^{i}$ 是`n*n`对角矩阵， $p_{i}$ 是`n*1`列向量。令导数=0：
   $$
-  \begin{aligned*}
+  \begin{aligned}
   V^{T}C^{i}p_{i}&=(V^{T}C^{i}V+\lambda I)u_{i}\\
   =>u_{i}&=(V^{T}C^{i}V+\lambda I)^{-1}V^{T}C^{i}p_{i} \\
   &=(V^{T}V+V^{T}(C^{i}-I)V+\lambda I)^{T}V^{T}C^{i}p_{i}
