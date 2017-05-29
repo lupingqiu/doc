@@ -71,9 +71,9 @@
   目标函数对 $u_{i}$ 求导，$u_{i}$ 是一个`k*1`的向量，值对向量的求导也是向量，且有“前导不变，后导转置”的原则，得到:
   $$
   \begin{aligned}
-  \frac{\partial J}{\partial u_{i}} &= -2\sum_{j}c_{ij}(p_{ij}-u_{i}^{T}v_{j})v_{j} + 2\lambda u_{i} \\
-  &=-2\sum_{j}c_{ij}(p_{ij}-v_{j}^{T}u_{i})v_{j} + 2\lambda u_{i} \\
-  &=-2\sum_{j}(c_{ij}p_{ij}v_{j}-c_{ij}v_{j}^{T}u_{i}v_{j}) + 2\lambda u_{i} \\
+  \frac{\partial J}{\partial u_{i}} &= -2\sum_{j}c_{ij}(p_{ij}-u_{i}^{T}v_{j})v_{j} + 2\lambda u_{i} \\\\
+  &=-2\sum_{j}c_{ij}(p_{ij}-v_{j}^{T}u_{i})v_{j} + 2\lambda u_{i} \\\\
+  &=-2\sum_{j}(c_{ij}p_{ij}v_{j}-c_{ij}v_{j}^{T}u_{i}v_{j}) + 2\lambda u_{i} \\\\
   &=-2V^{T}C^{i}p_{i} + V^{T}C^{i}Vu_{i} + 2\lambda u_{i}
   \end{aligned}
   $$
