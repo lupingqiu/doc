@@ -55,17 +55,17 @@
 
   $$
   U = \begin{bmatrix}
-  u_{0}^{T}\\
-  u_{1}^{T}\\
-  ...\\
-  u_{m}^{T}\\
+  u_{0}^{T}\\\\
+  u_{1}^{T}\\\\
+  ...\\\\
+  u_{m}^{T}\\\\
   \end{bmatrix}
   \,
   V = \begin{bmatrix}
-  v_{0}^{T}\\
-  v_{1}^{T}\\
-  ...\\
-  v_{n}^{T}\\
+  v_{0}^{T}\\\\
+  v_{1}^{T}\\\\
+  ...\\\\
+  v_{n}^{T}\\\\
   \end{bmatrix}
   $$
   目标函数对 $u_{i}$ 求导，$u_{i}$ 是一个`k*1`的向量，值对向量的求导也是向量，且有“前导不变，后导转置”的原则，得到:
@@ -80,8 +80,8 @@
   其中 $V$ 是`n*k`矩阵，$C^{i}$ 是`n*n`对角矩阵， $p_{i}$ 是`n*1`列向量。令导数=0：
   $$
   \begin{aligned}
-  V^{T}C^{i}p_{i}&=(V^{T}C^{i}V+\lambda I)u_{i}\\
-  =>u_{i}&=(V^{T}C^{i}V+\lambda I)^{-1}V^{T}C^{i}p_{i} \\
+  V^{T}C^{i}p_{i}&=(V^{T}C^{i}V+\lambda I)u_{i}\\\\
+  =>u_{i}&=(V^{T}C^{i}V+\lambda I)^{-1}V^{T}C^{i}p_{i} \\\\
   &=(V^{T}V+V^{T}(C^{i}-I)V+\lambda I)^{T}V^{T}C^{i}p_{i}
   \end{aligned}
   $$
