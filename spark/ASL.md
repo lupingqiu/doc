@@ -70,20 +70,20 @@
   $$
   目标函数对 $u_{i}$ 求导，$u_{i}$ 是一个`k*1`的向量，值对向量的求导也是向量，且有“前导不变，后导转置”的原则，得到:
   $$
-  \begin{aligned}
+  \begin{equation}
   \frac{\partial J}{\partial u_{i}} &= -2\sum_{j}c_{ij}(p_{ij}-u_{i}^{T}v_{j})v_{j} + 2\lambda u_{i} \\
   &=-2\sum_{j}c_{ij}(p_{ij}-v_{j}^{T}u_{i})v_{j} + 2\lambda u_{i} \\
   &=-2\sum_{j}(c_{ij}p_{ij}v_{j}-c_{ij}v_{j}^{T}u_{i}v_{j}) + 2\lambda u_{i} \\
   &=-2V^{T}C^{i}p_{i} + V^{T}C^{i}Vu_{i} + 2\lambda u_{i}
-  \end{aligned}
+  \end{equation}
   $$
   其中 $V$ 是`n*k`矩阵，$C^{i}$ 是`n*n`对角矩阵， $p_{i}$ 是`n*1`列向量。令导数=0：
   $$
-  \begin{aligned}
+  \begin{equation}
   V^{T}C^{i}p_{i}&=(V^{T}C^{i}V+\lambda I)u_{i}\\
   =>u_{i}&=(V^{T}C^{i}V+\lambda I)^{-1}V^{T}C^{i}p_{i} \\
   &=(V^{T}V+V^{T}(C^{i}-I)V+\lambda I)^{T}V^{T}C^{i}p_{i}
-  \end{aligned}
+  \end{equation}
   $$
   得到 $u_{i}$ 向量，其中 $V^{T}V$ 与`i`无关，可以提前计算，而 $C^{i}-I$ 只有 $n_{i}$ 非零元素，$n_{i} < n$，它表示用户`i`对`n`个商品 $a_{ij}>0$的个数，也即是 $p_{ij}=1$ 的个数。
 
