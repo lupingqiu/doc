@@ -36,7 +36,7 @@
   将$a_{ij}$ 转化成两个不同量来衡量：偏好 $p_{ij}$ 和信任度 $c_{ij}$。
   $$
   p_{ij}=\begin{cases}
-  1 & \text{ if } a_{ij}>0 \\
+  1 & \text{ if } a_{ij}>0 \\\\
   0 & \text{ if } a_{ij}=0
   \end{cases}
   $$
